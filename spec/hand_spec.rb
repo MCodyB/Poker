@@ -95,17 +95,17 @@ describe Hand do
 
     end
 
-    describe "#two_pair?" do
-      let(:two_pair) {Hand.new([
+    describe "#two_pairs?" do
+      let(:two_pairs) {Hand.new([
       Card.new(:clubs,:three),Card.new(:hearts,:three),
       Card.new(:spades,:queen),Card.new(:hearts, :queen),
       Card.new(:spades, :five)])}
-      it "returns true if two_pair" do
-        two_pair.two_pair?.should == true
+      it "returns true if two_pairs" do
+        two_pairs.two_pairs?.should == true
       end
 
-      it "returns false if not two_pair" do
-        hand.two_pair?.should == false
+      it "returns false if not two_pairs" do
+        hand.two_pairs?.should == false
       end
     end
 
