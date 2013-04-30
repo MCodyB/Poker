@@ -47,6 +47,10 @@ class Card
     VALUE_STRINGS
   end
 
+  def to_s
+    "#{self.suit}#{self.value}"
+  end
+
   def initialize(suit, value)
     raise "Not a suit" unless Card.suits.include?(suit)
     raise "Invalid value" unless Card.strings.include?(value)

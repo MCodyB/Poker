@@ -38,7 +38,7 @@ describe Deck do
     let(:d) {Deck.new([Card.new(:clubs, :three)])}
     let(:c) {[Card.new(:diamonds, :seven), Card.new(:hearts, :ace)]}
     it "adds cards to deck" do
-      d.return(c)
+      d.return_cards(c)
       d.count == 3
     end
   end

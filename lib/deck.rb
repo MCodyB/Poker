@@ -30,7 +30,7 @@ class Deck
     @cards.shift(n)
   end
 
-  def return(cards)
+  def return_cards(cards)
     @cards.push(*cards)
   end
 
