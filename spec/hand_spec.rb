@@ -75,10 +75,9 @@ describe Hand do
         straight.straight?.should == true
       end
 
-      it "returns false if not flush" do
+      it "returns false if not straight" do
         hand.straight?.should == false
       end
-
     end
 
     describe "#one_pair?" do
@@ -86,7 +85,14 @@ describe Hand do
       Card.new(:clubs,:three),Card.new(:hearts,:three),
       Card.new(:spades,:queen),Card.new(:hearts, :king),
       Card.new(:spades, :five)])}
-      pending
+      it "returns true if one pair" do
+        one_pair.one_pair?.should == true
+      end
+
+      it "returns false if not one pair" do
+        hand.one_pair?.should == false
+      end
+
     end
 
     describe "#two_pair?" do
@@ -94,7 +100,13 @@ describe Hand do
       Card.new(:clubs,:three),Card.new(:hearts,:three),
       Card.new(:spades,:queen),Card.new(:hearts, :queen),
       Card.new(:spades, :five)])}
-      pending
+      it "returns true if two_pair" do
+        two_pair.two_pair?.should == true
+      end
+
+      it "returns false if not two_pair" do
+        hand.two_pair?.should == false
+      end
     end
 
     describe "#three_kind?" do
@@ -102,7 +114,14 @@ describe Hand do
       Card.new(:clubs,:three),Card.new(:hearts,:three),
       Card.new(:spades,:three),Card.new(:hearts, :queen),
       Card.new(:spades, :five)])}
-      pending
+      it "returns true if three_kind" do
+        three_kind.three_kind?.should == true
+      end
+
+      it "returns false if not three_kind" do
+        hand.three_kind?.should == false
+      end
+
     end
 
     describe "#full_house?" do
@@ -110,7 +129,14 @@ describe Hand do
       Card.new(:clubs,:three),Card.new(:hearts,:three),
       Card.new(:spades,:five),Card.new(:hearts, :five),
       Card.new(:spades, :five)])}
-      pending
+      it "returns true if full_house" do
+        full_house.full_house?.should == true
+      end
+
+      it "returns false if not full_house" do
+        hand.full_house?.should == false
+      end
+
     end
 
     describe "#four_kind?" do
@@ -118,16 +144,28 @@ describe Hand do
       Card.new(:clubs,:three),Card.new(:hearts,:three),
       Card.new(:spades,:three),Card.new(:diamonds, :three),
       Card.new(:spades, :five)])}
-      pending
+      it "returns true if four_kind" do
+        four_kind.four_kind?.should == true
+      end
+
+      it "returns false if not four_kind" do
+        hand.four_kind?.should == false
+      end
+
     end
 
     describe "#straight_flush?" do
-      let(:flush) {Hand.new([
+      let(:straight_flush) {Hand.new([
         Card.new(:clubs,:three),Card.new(:clubs,:deuce),
         Card.new(:clubs,:four),Card.new(:clubs, :six),
         Card.new(:clubs, :five)])}
+        it "returns true if straight flush" do
+          straight_flush.straight_flush?.should == true
+        end
 
-      pending
+        it "returns false if not straight flush" do
+          hand.straight_flush?.should == false
+        end
     end
 
     describe "high_card" do
