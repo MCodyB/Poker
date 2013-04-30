@@ -35,7 +35,7 @@ class Hand
   end
 
   def high_card
-    x =@cards.max_by{|i| i.int_value}
+    x = @cards.max_by{|i| i.int_value}
     x.int_value
     # value = 0
 #     high_card = nil
