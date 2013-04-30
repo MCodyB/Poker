@@ -47,6 +47,10 @@ class Card
     VALUE_STRINGS
   end
 
+  def self.ints
+    VALUE_INTEGERS
+  end
+
   def to_s
     "#{self.suit}#{self.value}"
   end
@@ -56,5 +60,9 @@ class Card
     raise "Invalid value" unless Card.strings.include?(value)
     @suit = suit
     @value = value
+  end
+
+  def int_value
+    VALUE_INTEGERS[@value]
   end
 end

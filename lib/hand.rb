@@ -32,4 +32,27 @@ class Hand
     cards.size.times{add_card(deck)}
   end
 
+  def high_card
+    value = 0
+    high_card = nil
+    @cards.each do |card|
+      if card.int_value > value
+        value = card.int_value
+        high_card = card
+      end
+    end
+    high_card
+  end
+
+  def flush?
+    suit = @cards[0].suit
+    @cards.all?{|card| card.suit == suit}
+  end
+
+  def straight?
+    a = @cards.collect{|card| card.int_value}.sort.uniq
+    a.last - a.first == 4 && a.size == 5
+  end
+  #
+  # def
 end
