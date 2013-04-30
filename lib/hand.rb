@@ -4,6 +4,8 @@ require 'card'
 class Hand
   attr_reader :cards, :hand_score
 
+
+
   def initialize(cards)
     raise "Must initialize with array" unless cards.is_a?(Array)
     @cards = cards
@@ -33,15 +35,17 @@ class Hand
   end
 
   def high_card
-    value = 0
-    high_card = nil
-    @cards.each do |card|
-      if card.int_value > value
-        value = card.int_value
-        high_card = card
-      end
-    end
-    high_card.int_value
+    x =@cards.max_by{|i| i.int_value}
+    x.int_value
+    # value = 0
+#     high_card = nil
+#     @cards.each do |card|
+#       if card.int_value > value
+#         value = card.int_value
+#         high_card = card
+#       end
+#     end
+#     high_card.int_value
   end
 
   def flush?
@@ -108,6 +112,17 @@ class Hand
     one_pair? && three_kind?
   end
 
+  def get_hand_score
+    return straight_flush? if straight_flush?
+    return four_kind? if four_kind?
+    return full_house? if full_house?
+    return flush? if flush?
+    return straight? if straight?
+    return three_kind? if three_kind?
+    return two_pairs? if two_pairs?
+    return one_pair? if one_pair?
+    return nothing? if nothing?
+  end
 
 
 

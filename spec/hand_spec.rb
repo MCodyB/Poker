@@ -168,12 +168,32 @@ describe Hand do
         end
     end
 
-    describe "high_card" do
+    describe "#high_card" do
       it "returns the highest value" do
-        hand.high_card.value.should == :king
+        hand.high_card.should == 13
       end
     end
 
+    describe "#number_times" do
+      let(:four_kind) {Hand.new([
+      Card.new(:clubs,:three),Card.new(:hearts,:three),
+      Card.new(:spades,:three),Card.new(:diamonds, :three),
+      Card.new(:spades, :five)])}
+      it "returns a hash of occurances of values" do
+        four_kind.number_times.should == {3 => 4, 5 => 1}
+      end
+    end
+
+    describe "#get_hand_score" do
+      let(:four_kind) {Hand.new([
+      Card.new(:clubs,:three),Card.new(:hearts,:three),
+      Card.new(:spades,:three),Card.new(:diamonds, :three),
+      Card.new(:spades, :five)])}
+      it "sets the hand score" do
+        four_kind.get_hand_score
+        four_kind.hand_score.should == 185
+      end
+    end
   end
 
 end
