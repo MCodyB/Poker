@@ -10,7 +10,6 @@ class Player
   end
 
   def less_bank(amt)
-
     raise("not enough money") if amt > @bankroll
     @bankroll -= amt
     @game.take_bet(amt)
@@ -26,6 +25,7 @@ class Player
   end
 
   def fold
+    @hand.return_cards(@deck, @cards)
     @hand = nil
   end
 

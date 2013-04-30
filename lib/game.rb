@@ -6,7 +6,7 @@ class Game
   attr_reader :players, :pot, :deck
 
   def initialize
-    @players = {}
+    @players = []
     @deck = Deck.new.shuffle!
     @pot = 0
   end
@@ -17,7 +17,7 @@ class Game
     num_players.times do |i|
       printf "Enter player #{i}'s name: "
       name = gets.chomp
-      @players[name] = Player.new(name, 1000)
+      @players << Player.new(name, 1000, self)
     end
   end
 
@@ -30,11 +30,11 @@ class Game
   end
 
   def assign_hands
-    @players.each{|name,player| player.hand = Hand.deal_in(@deck)}
+    @players.each{|player| player.hand = Hand.deal_in(@deck)}
   end
 
   def compare_hands
-    @players.values.max_by{|player| player.hand_score}
+    @players.max_by{|player| player.hand_score}
   end
 
   def play
@@ -81,6 +81,6 @@ class Game
   # end
 
   def win?
-    @players.size == 0 || @players.values.one?{|player| player.bankroll > 0 }
+    @players.size == 0 || @players.one?{|player| player.bankroll > 0 }
   end
 end
