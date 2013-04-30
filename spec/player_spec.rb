@@ -11,7 +11,7 @@ require 'game'
 describe Player do
   let(:game) {Game.new}
   let(:deck) {Deck.new}
-  let(:player) {Player.new("Scotty",1000, game)}
+  let(:player) {Player.new("Scotty",1000, game, deck)}
   let(:hand) {Hand.deal_in(deck)}
 
   describe "initialize" do
@@ -62,15 +62,17 @@ describe Player do
   end
 
   describe "fold" do
-    before(:each){player.hand = Hand.deal_in(deck)}
     it "sets hand to nil" do
+      player.hand = Hand.deal_in(deck)
       player.fold
       player.hand.should be_nil
     end
 
-    it "deletes player from game's players" do
+    it "returns cards to the deck" do
+      player.hand = Hand.deal_in(deck)
+      test_size = deck.count
       player.fold
-      game.players.include?(self)
+      deck.count.should > test_size
     end
   end
 

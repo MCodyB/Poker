@@ -1,12 +1,18 @@
+require "hand"
+require 'game'
+require 'card'
+require 'deck'
+
 class Player
   attr_accessor :hand,  :bankroll
   attr_reader :name
 
-  def initialize(name, bankroll, game)
+  def initialize(name, bankroll, game, deck)
     @name = name
     @bankroll = bankroll
     @hand = nil
     @game = game
+    @deck = deck
   end
 
   def less_bank(amt)
@@ -25,7 +31,7 @@ class Player
   end
 
   def fold
-    @hand.return_cards(@deck, @cards)
+    @hand.return_cards(@deck, @hand.cards)
     @hand = nil
   end
 

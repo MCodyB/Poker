@@ -1,10 +1,12 @@
-require 'deck'
+require 'player'
+require "hand"
+require 'game'
 require 'card'
+require 'deck'
+
 
 class Hand
   attr_reader :cards, :hand_score
-
-
 
   def initialize(cards)
     raise "Must initialize with array" unless cards.is_a?(Array)

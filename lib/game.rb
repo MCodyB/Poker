@@ -1,6 +1,8 @@
 require 'player'
-require 'game'
+require "hand"
+require 'card'
 require 'deck'
+
 
 class Game
   attr_reader :players, :pot, :deck
@@ -17,7 +19,7 @@ class Game
     num_players.times do |i|
       printf "Enter player #{i}'s name: "
       name = gets.chomp
-      @players << Player.new(name, 1000, self)
+      @players << Player.new(name, 1000, self, @deck)
     end
   end
 

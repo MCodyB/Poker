@@ -1,4 +1,9 @@
-require_relative "card"
+require 'player'
+require "hand"
+require 'game'
+require 'card'
+require 'deck'
+
 
 class Deck
   attr_accessor :cards
